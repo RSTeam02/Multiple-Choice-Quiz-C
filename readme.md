@@ -4,10 +4,20 @@ Similar to the Multiple Choice Quiz in C++, the program is rewritten in C langua
 
 progress:
 
+structs:
+
 + player type struct: name and score
 + strStruct type: char array with number of row information
 + qStruct type struct => single question with question size and row information 
-+ steps: store the whole text in a char array, delimit by row "\n", then delimit every row by "," (filereader.c) => re-store seperately all questions in a 2-dim qStruct array (question.c)
+
+filereader.c:
+
++ step1: store the whole text in a char array, count number of lines
+
+question.c:
+
++ step2: delimit the whole string by row "\n" (set of questions)
++ step3: store all questions in a 2-dim qStruct array, then delimit every column of a row by "," (question, answer and solution possibilities) 
 + print question, answer, solution of right answer(s) in letters (A-Z) 
 
 ```
