@@ -37,15 +37,28 @@ qStruct **str2Question(strStruct str){
     return questions;
 }
 
+int countAnswer(int qNo, qStruct **questions){
+    int numOfAnswer =0;               
+    for(int l =0; l<questions[qNo][0].qSize; l++){            
+        if(strlen(questions[qNo][l].question) == 1){        
+            numOfAnswer++;        
+        }        
+    }
+    return numOfAnswer;
+}
+
 void printQuestion(qStruct **questions){
     
+    //printf("%d",num);
     for(int k =0; k<questions[0][0].line; k++){
         char cAnswer = 'A';
         char cSolution = 'A';
-        for(int l =0; l<questions[k][0].qSize; l++){            
+        int num = countAnswer(k, questions);            
+        int *rnd = randomPos(num, true); 
+        for(int l =0; l < questions[k][0].qSize; l++){                       
             if(strlen(questions[k][l].question) != 1){        
                 if(l != 0){
-                    printf("%c: %s\n",cAnswer, questions[k][l].question);
+                    printf("%c: %s\n",cAnswer, questions[k][rnd[l%num]+1].question);                   
                     cAnswer++;
                 }else{
                     printf("Q: %s\n", questions[k][l].question);
@@ -54,11 +67,12 @@ void printQuestion(qStruct **questions){
                 if(cSolution == 'A'){
                     printf("Solution:\n");
                 }             
-                if(strcmp(questions[k][l].question, "+") == 0){
+                if(strcmp(questions[k][rnd[l%num]+num+1].question, "+") == 0){
                     printf("%c\n",cSolution);                   
                 }
                 cSolution++;                
-            }        
+            }
+             //printf("%d\n",rnd[l%num]);       
         }
         printf("\n");         
     }

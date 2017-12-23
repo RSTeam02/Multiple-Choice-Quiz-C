@@ -4,6 +4,8 @@
 #include "filereader.h"
 #include "question.h"
 #include "player.h"
+#include "shuffle.h"
+#include <stdbool.h>
 
 int main(void){   
     printQuestion(str2Question(readFile()));
@@ -14,6 +16,6 @@ int main(void){
     p1.score += .25;
     p1.score += .25;
     printf("%s achieved %f points\n", p1.name, p1.score); 
-
+    
 
 }
