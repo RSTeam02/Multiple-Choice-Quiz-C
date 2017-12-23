@@ -25,7 +25,7 @@ question.c:
 + print question, answer, solution of right answer(s) in letters (A-Z) 
 
 ```
-$ gcc main.c filereader.c question.c -std=c99 -o main
+$ gcc main.c filereader.c question.c shuffle.c -std=c99 -o main
 $ ./main
 Q: 99 is equal to:
 A: 3*30+3²
