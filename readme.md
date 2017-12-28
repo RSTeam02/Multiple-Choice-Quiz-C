@@ -4,6 +4,12 @@ Similar to the Multiple Choice Quiz in C++, the program is rewritten in C langua
 
 progress:
 
+
+controller.c:
+
++ controls gameplay: player type (name,score) show question, check answer, sum score (buggy)
++ input validation: check user input 
+
 shuffle.c:
 
 + shuffle positions of answers and solutions 
@@ -25,148 +31,74 @@ question.c:
 + print question, answer, solution of right answer(s) in letters (A-Z) 
 
 ```
-$ gcc main.c filereader.c question.c shuffle.c -std=c99 -o main
+$ gcc main.c filereader.c question.c controller.c shuffle.c -std=c99 -o main
 $ ./main
-Q: 99 is equal to:
-A: 3*30+3²
-B: 11*9
-C: 2*33
-Solution:
-A
-B
-
-Q: Which color component(s) contain(s) the RGB color space?
-A: grey
-B: red
-C: ruby
-D: rose
-E: blue
-F: green
-Solution:
-B
-E
-F
-
-Q: What is the meaning of "x++"/"x--"?
-A: it's equal to x=x+2/x=x-2
-B: it adds/subtracts x by 1
-C: it is also known as increment/decrement operator
-D: it's equal to x=x+1/x=x-1
-E: it adds/subtracts x by 2
+Name: Joe, Score: 0.000000
+Q: What do you know about the C-Language?
+A: it was developed by Bjarne Stroustrup
+B: it's an imperative programming language
+C: it was developed by Dennis Ritchie
+D: it's a programming language with object orientation
+E: the successor of C is the D language
+F: C is nowadays still used for OS-Development
+G: the "hello world" program gains popularity within the C-language
+BCfg
 Solution:
 B
 C
-D
-
-Q: What do you know about the C-Language?
-A: it was developed by Bjarne Stroustrup
-B: the "hello world" program gains popularity within the C-language
-C: the successor of C is the D language
-D: C is nowadays still used for OS-Development
-E: it's an imperative programming language
-F: it's a programming language with object orientation
-G: it was developed by Dennis Ritchie
-Solution:
-B
-D
-E
+F
 G
+4 answer(s) right, 2 answer(s) wrong
+Joe achieved 0.500000 pts for this question
+Joe's score: 0.500000pts
 
-Joe achieved 1.500000 points
-$ ./main
-Q: 99 is equal to:
-A: 11*9
-B: 3*30+3²
-C: 2*33
-Solution:
-A
-B
 
 Q: Which color component(s) contain(s) the RGB color space?
 A: grey
-B: red
-C: rose
-D: ruby
-E: green
-F: blue
+B: blue
+C: red
+D: rose
+E: ruby
+F: green
+bc
 Solution:
 B
-E
+C
 F
+2 answer(s) right, 0 answer(s) wrong
+Joe achieved 0.500000 pts for this question
+Joe's score: 1.000000pts
+
+
+Q: 99 is equal to:
+A: 2*33
+B: 11*9
+C: 3*30+3²
+abc
+Solution:
+B
+C
+1 answer(s) right, 1 answer(s) wrong
+Joe achieved 0.000000 pts for this question
+Joe's score: 1.000000pts
+
 
 Q: What is the meaning of "x++"/"x--"?
-A: it's equal to x=x+2/x=x-2
+A: it adds/subtracts x by 1
 B: it adds/subtracts x by 2
 C: it is also known as increment/decrement operator
-D: it adds/subtracts x by 1
+D: it's equal to x=x+2/x=x-2
 E: it's equal to x=x+1/x=x-1
+aec
 Solution:
+A
 C
-D
 E
+3 answer(s) right, 0 answer(s) wrong
+Joe achieved 0.750000 pts for this question
+Joe's score: 1.750000pts
 
-Q: What do you know about the C-Language?
-A: it was developed by Bjarne Stroustrup
-B: C is nowadays still used for OS-Development
-C: it was developed by Dennis Ritchie
-D: the "hello world" program gains popularity within the C-language
-E: the successor of C is the D language
-F: it's a programming language with object orientation
-G: it's an imperative programming language
-Solution:
-B
-C
-D
-G
 
-Joe achieved 1.500000 points
-$ ./main
-Q: 99 is equal to:
-A: 11*9
-B: 2*33
-C: 3*30+3²
-Solution:
-A
-C
-
-Q: Which color component(s) contain(s) the RGB color space?
-A: blue
-B: rose
-C: red
-D: green
-E: grey
-F: ruby
-Solution:
-A
-C
-D
-
-Q: What is the meaning of "x++"/"x--"?
-A: it's equal to x=x+2/x=x-2
-B: it is also known as increment/decrement operator
-C: it's equal to x=x+1/x=x-1
-D: it adds/subtracts x by 1
-E: it adds/subtracts x by 2
-Solution:
-B
-C
-D
-
-Q: What do you know about the C-Language?
-A: the "hello world" program gains popularity within the C-language
-B: it was developed by Bjarne Stroustrup
-C: the successor of C is the D language
-D: C is nowadays still used for OS-Development
-E: it's a programming language with object orientation
-F: it was developed by Dennis Ritchie
-G: it's an imperative programming language
-Solution:
-A
-D
-F
-G
-
-Joe achieved 1.500000 points
 
 
 
