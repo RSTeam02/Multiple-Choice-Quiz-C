@@ -88,7 +88,7 @@ void checkAnswer(char *input, char *solution){
 
 
 void printQuestion(qStruct **questions){
-    printf("Name: %s, Score: %f\n", p1.name, p1.score);    
+    printf("Name: %s, Score: %f\n", p1.name, p1.score);       
     int *rndQuestion = randomPos(questions[0][0].line, true);
     for(int k =0; k<questions[0][0].line; k++){
         int rndQ = rndQuestion[k];        

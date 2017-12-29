@@ -7,6 +7,5 @@
 #include <stdbool.h>
 
 int main(void){   
-    start(str2Question(readFile()));
-   	
+    start(str2Question(readFile()));   	
 }

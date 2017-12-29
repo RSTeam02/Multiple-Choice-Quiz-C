@@ -14,7 +14,7 @@ strStruct readFile(){
     strStruct str;
     str.line = malloc(1);    
     int c;   
-    size_t numOfLine=0;
+    str.numOfLine = 1;
     int i =0;
     
     //file to string (char array)    

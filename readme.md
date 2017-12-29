@@ -34,68 +34,84 @@ progress:
 $ gcc main.c filereader.c question.c controller.c shuffle.c -std=c99 -o main
 $ ./main
 Name: Joe, Score: 0.000000
-Q: What do you know about the C-Language?
-A: it's a programming language with object orientation
-B: it's an imperative programming language
-C: it was developed by Dennis Ritchie
-D: it was developed by Bjarne Stroustrup
-E: the successor of C is the D language
-F: the "hello world" program gains popularity within the C-language
-G: C is nowadays still used for OS-Development
-CgfB
+Q: What does the "%" operator in a programming language?
+A: it is supposed to use for percentage calculation
+B: it is also known as the "modulo" operator
+C: 1%100=1/100
+D: it calculates the remainder of a division
+E: 1%100=100
+eDb
 Solution:
 B
-C
-F
-G
-4 answer(s) right, 0 answer(s) wrong
-Joe achieved 1.000000 pts for this question
-Joe's score: 1.000000pts
-
-
-Q: Which color component(s) contain(s) the RGB color space?
-A: red
-B: green
-C: ruby
-D: rose
-E: blue
-F: grey
-eA
-Solution:
-A
-B
+D
 E
-2 answer(s) right, 0 answer(s) wrong
-Joe achieved 0.500000 pts for this question
-Joe's score: 1.500000pts
+3 answer(s) right, 0 answer(s) wrong
+Joe achieved 0.750000 pts for this question
+Joe's score: 0.750000pts
 
 
 Q: 99 is equal to:
 A: 2*33
-B: 3*30+3²
-C: 11*9
-cBA
+B: 11*9
+C: 3*30+3²
+cB
 Solution:
 B
 C
-2 answer(s) right, 1 answer(s) wrong
-Joe achieved 0.250000 pts for this question
-Joe's score: 1.750000pts
+2 answer(s) right, 0 answer(s) wrong
+Joe achieved 0.500000 pts for this question
+Joe's score: 1.250000pts
 
 
 Q: What is the meaning of "x++"/"x--"?
-A: it adds/subtracts x by 2
-B: it adds/subtracts x by 1
-C: it's equal to x=x+1/x=x-1
-D: it's equal to x=x+2/x=x-2
-E: it is also known as increment/decrement operator
-BDE
+A: it is also known as increment/decrement operator
+B: it's equal to x=x+1/x=x-1
+C: it adds/subtracts x by 2
+D: it adds/subtracts x by 1
+E: it's equal to x=x+2/x=x-2
+EDBa
+Solution:
+A
+B
+D
+3 answer(s) right, 1 answer(s) wrong
+Joe achieved 0.500000 pts for this question
+Joe's score: 1.750000pts
+
+
+Q: What do you know about the C-Language?
+A: it's an imperative programming language
+B: it's a programming language with object orientation
+C: C is nowadays still used for OS-Development
+D: the "hello world" program gains popularity within the C-language
+E: the successor of C is the D language
+F: it was developed by Dennis Ritchie
+G: it was developed by Bjarne Stroustrup
+fac
+Solution:
+A
+C
+D
+F
+3 answer(s) right, 0 answer(s) wrong
+Joe achieved 0.750000 pts for this question
+Joe's score: 2.500000pts
+
+
+Q: Which color component(s) contain(s) the RGB color space?
+A: rose
+B: red
+C: ruby
+D: green
+E: grey
+F: blue
+bfd
 Solution:
 B
-C
-E
-2 answer(s) right, 1 answer(s) wrong
-Joe achieved 0.250000 pts for this question
-Joe's score: 2.000000pts
+D
+F
+3 answer(s) right, 0 answer(s) wrong
+Joe achieved 0.750000 pts for this question
+Joe's score: 3.250000pts
 
 ```
