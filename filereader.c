@@ -1,3 +1,11 @@
+/**
+ @sakaijun
+ + conversion of text file into string 
+ + every row indicated with '\n'
+ + end with '\0'
+
+*/
+
 #include "filereader.h"
 
 strStruct readFile(){

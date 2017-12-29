@@ -1,3 +1,8 @@
+/**
+ @sakaijun
+ + conversion of string in chunks of questions, answer possibilities and solutions in 2d array
+ */
+
 #include "question.h"
 
 qStruct **str2Question(strStruct str){

@@ -1,7 +1,14 @@
+/**
+ @sakaijun
+ controls gaming procedure: 
+ + create player with name, per right answer: +0.25pts, per wrong answer: -0.25pts, non-checked: 0pts 
+ + input validation: case, order insensitive, remove double chars eg. aaabAbCc => ABC
+ + sum score, calculate end result
+*/
+
 #include "controller.h"
 
 player p1;
-
 
 void start(qStruct **questions){
     p1.name = "Joe";
@@ -20,41 +27,40 @@ int countAnswer(int qNo, qStruct **questions){
 }
 
 
-char *validation(char *input, size_t size){    
-    //remove duplicates e.g. aaababcc => abc    
-    char *inputChar = malloc(strlen(input)); 
-    strcpy(inputChar, input);
-    //sort string by char e.g. with bubble sort
+char *validation(char *input, size_t size){
+    /*
+        + convert input to upper case
+        + sort string by alphabet e.g. with bubble sort
+    */
+    for (int i =0; i<strlen(input); i++){
+        input[i] = toupper(input[i]);               
+    }   
     for(int i = 0; i < strlen(input); i++){
         for(int j = i; j < strlen(input); j++){
-            if(inputChar[i] >inputChar[j]){               
-                char tmp = inputChar[i];
-                inputChar[i] =inputChar[j];
-                inputChar[j] = tmp;                      
+            if(input[i] >input[j]){               
+                char tmp = input[i];
+                input[i] =input[j];
+                input[j] = tmp;                      
             }                          
         }
     }
+    input[strlen(input)] = '\0';
     char *nonDoubles = malloc(size);
-    //pick up only singles
+    /*
+        + remove duplicates e.g. aaabAbCc => ABC       
+    */
     int k =0;
     for(int j = 0; j< strlen(input); j++){
-        if(inputChar[j] != inputChar[j+1]){                
-            nonDoubles[k] = inputChar[j];            
+        if(input[j] != input[j+1]){                
+            nonDoubles[k] = input[j];            
             k++;
         }          
     }
-    
-    char *upper = malloc(size); 
-
-    //convert to upper case
-    for (int i =0; i<size;i++){
-        upper[i] = toupper(nonDoubles[i]);        
-    }
-    return upper;
+    nonDoubles[k] = '\0';
+    return nonDoubles;
 }
 
-void checkAnswer(char *input, char *solution){
-    
+void checkAnswer(char *input, char *solution){    
     double result =0;
     double pts = .25;  
     int right = 0;
@@ -85,8 +91,7 @@ void printQuestion(qStruct **questions){
     printf("Name: %s, Score: %f\n", p1.name, p1.score);    
     int *rndQuestion = randomPos(questions[0][0].line, true);
     for(int k =0; k<questions[0][0].line; k++){
-        int rndQ = rndQuestion[k];
-        
+        int rndQ = rndQuestion[k];        
         char cAnswer = 'A';
         char cSolution = 'A';
         int numAnswer = countAnswer(rndQ, questions);       
