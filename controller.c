@@ -61,28 +61,21 @@ char *validation(char *input, size_t size){
 }
 
 
-bool findLetter(char toChar, char *input){    
-    char cAnswer = 'A';
-    size_t aSize = 0;
-    bool found = true;
-    for (int i = 0; cAnswer < toChar; i++){     
-        aSize++;
-        cAnswer++;
-    }
-    cAnswer = 'A';
+bool findLetter(size_t aSize, char *input){    
+    char cAnswer = 'A';   
+    bool found = true;  
     char *str = malloc(aSize);
-    for (int i = 0; i < aSize; i++){
+    int i = 0;
+
+    do{
         str[i] = cAnswer;         
-        cAnswer++;
-        
-    }
-    for (int i =0; i<strlen(input); i++){
-        input[i] = toupper(input[i]);               
-    }    
-    str[aSize] = '\0';
+        cAnswer++;        
+        i++;
+    }while(i < aSize); 
+    str[i] = '\0';
 
     for (int i = 0; i < strlen(input); i++){
-        if(!strchr(str, input[i])){
+        if(!strchr(str, toupper(input[i]))){
             printf("%c is not in %s, repeat input\n", input[i], str);
             found = false;
         }
@@ -127,13 +120,15 @@ void printQuestion(qStruct **questions){
         int numAnswer = countAnswer(rndQ, questions);       
         char *solutionStr = (char*)malloc(sizeof(char));
         char *input = (char*)malloc(sizeof(char));
-        size_t solutionIdx= 0;        
+        size_t solutionIdx= 0;
+        size_t aSize = 0;        
         int *rndAnswer = randomPos(numAnswer, true); 
         for(int l =0; l < questions[rndQ][0].qSize; l++){                       
             if(strlen(questions[rndQ][l].question) != 1){        
                 if(l != 0){
                     printf("%c: %s\n",cAnswer, questions[rndQ][rndAnswer[l%numAnswer]+1].question);                   
                     cAnswer++;
+                    aSize++;
                 }else{
                     printf("Q: %s\n", questions[rndQ][l].question);
                 }                
@@ -141,7 +136,7 @@ void printQuestion(qStruct **questions){
         }
         do{
             scanf("%s", input);
-        }while(!findLetter(cAnswer, input));      
+        }while(!findLetter(aSize, input));      
         for(int l =0; l < questions[rndQ][0].qSize; l++){                       
             if(strlen(questions[rndQ][l].question) == 1){                              
                 if(cSolution == 'A'){

@@ -14,5 +14,5 @@ void start(qStruct **questions);
 int countAnswer(int qNo, qStruct **questions);
 char *validation(char *input, size_t size);
 void printQuestion(qStruct **questions);
-bool findLetter(char cAnswer, char *input);
+bool findLetter(size_t aSize, char *input);
 void checkAnswer(char *input, char *solution);
