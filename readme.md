@@ -6,9 +6,14 @@ progress:
 
 
 28.12. controller.c:
++ 30.12. input validation consists of: 
+    => letter checking: if user enters char(s) that don't consist in the set of solutions (e.g. AXCB in ABCD), repeat user input
+    => check Answer: convert to upper case, sort string, remove duplicates, when user enters e.g. ccaabba will be ABC
+
 + 29.12. fixed score bug (char arr termination)
 + 28.12. create player with name, score, print question, user input, check answer, sum score (buggy)
-+ 28.12. input validation: check user input 
++ 28.12. input validation: check user input
+
 
 26.12. shuffle.c:
 
@@ -34,84 +39,91 @@ progress:
 $ gcc main.c filereader.c question.c controller.c shuffle.c -std=c99 -o main
 $ ./main
 Name: Joe, Score: 0.000000
-Q: What does the "%" operator in a programming language?
-A: it is supposed to use for percentage calculation
-B: it is also known as the "modulo" operator
-C: 1%100=1/100
-D: it calculates the remainder of a division
-E: 1%100=100
-eDb
+Q: What is the meaning of "x++"/"x--"?
+A: it is also known as increment/decrement operator
+B: it adds/subtracts x by 2
+C: it adds/subtracts x by 1
+D: it's equal to x=x+1/x=x-1
+E: it's equal to x=x+2/x=x-2
+cad
 Solution:
-B
+A
+C
 D
-E
 3 answer(s) right, 0 answer(s) wrong
 Joe achieved 0.750000 pts for this question
 Joe's score: 0.750000pts
 
 
 Q: 99 is equal to:
-A: 2*33
-B: 11*9
-C: 3*30+3²
-cB
+A: 11*9
+B: 3*30+3²
+C: 2*33
+XABZ       
+X is not in ABC, repeat input
+Z is not in ABC, repeat input
+Ba
 Solution:
+A
 B
-C
 2 answer(s) right, 0 answer(s) wrong
 Joe achieved 0.500000 pts for this question
 Joe's score: 1.250000pts
 
 
-Q: What is the meaning of "x++"/"x--"?
-A: it is also known as increment/decrement operator
-B: it's equal to x=x+1/x=x-1
-C: it adds/subtracts x by 2
-D: it adds/subtracts x by 1
-E: it's equal to x=x+2/x=x-2
-EDBa
+Q: Which color component(s) contain(s) the RGB color space?
+A: green
+B: red
+C: rose
+D: grey
+E: ruby
+F: blue
+gF 
+G is not in ABCDEF, repeat input
+fab
 Solution:
 A
 B
-D
-3 answer(s) right, 1 answer(s) wrong
-Joe achieved 0.500000 pts for this question
-Joe's score: 1.750000pts
+F
+3 answer(s) right, 0 answer(s) wrong
+Joe achieved 0.750000 pts for this question
+Joe's score: 2.000000pts
 
 
 Q: What do you know about the C-Language?
-A: it's an imperative programming language
-B: it's a programming language with object orientation
-C: C is nowadays still used for OS-Development
-D: the "hello world" program gains popularity within the C-language
+A: it's a programming language with object orientation
+B: C is nowadays still used for OS-Development
+C: it was developed by Bjarne Stroustrup
+D: it was developed by Dennis Ritchie
 E: the successor of C is the D language
-F: it was developed by Dennis Ritchie
-G: it was developed by Bjarne Stroustrup
-fac
-Solution:
-A
-C
-D
-F
-3 answer(s) right, 0 answer(s) wrong
-Joe achieved 0.750000 pts for this question
-Joe's score: 2.500000pts
-
-
-Q: Which color component(s) contain(s) the RGB color space?
-A: rose
-B: red
-C: ruby
-D: green
-E: grey
-F: blue
-bfd
+F: the "hello world" program gains popularity within the C-language
+G: it's an imperative programming language
+ghb
+H is not in ABCDEFG, repeat input
+bdcfg
 Solution:
 B
 D
 F
+G
+4 answer(s) right, 1 answer(s) wrong
+Joe achieved 0.750000 pts for this question
+Joe's score: 2.750000pts
+
+
+Q: What does the "%" operator in a programming language?
+A: 1%100=1/100
+B: it is supposed to use for percentage calculation
+C: 1%100=100
+D: it calculates the remainder of a division
+E: it is also known as the "modulo" operator
+cde
+Solution:
+C
+D
+E
 3 answer(s) right, 0 answer(s) wrong
 Joe achieved 0.750000 pts for this question
-Joe's score: 3.250000pts
+Joe's score: 3.500000pts
 
 ```

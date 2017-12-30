@@ -60,6 +60,37 @@ char *validation(char *input, size_t size){
     return nonDoubles;
 }
 
+
+bool findLetter(char toChar, char *input){    
+    char cAnswer = 'A';
+    size_t aSize = 0;
+    bool found = true;
+    for (int i = 0; cAnswer < toChar; i++){     
+        aSize++;
+        cAnswer++;
+    }
+    cAnswer = 'A';
+    char *str = malloc(aSize);
+    for (int i = 0; i < aSize; i++){
+        str[i] = cAnswer;         
+        cAnswer++;
+        
+    }
+    for (int i =0; i<strlen(input); i++){
+        input[i] = toupper(input[i]);               
+    }  
+    int i,j=0;
+    str[aSize] = '\0';
+
+    for (int i = 0; i < strlen(input); i++){
+        if(!strchr(str, input[i])){
+            printf("%c is not in %s, repeat input\n", input[i], str);
+            found = false;
+        }
+    }
+    return found;
+}
+
 void checkAnswer(char *input, char *solution){    
     double result =0;
     double pts = .25;  
@@ -109,7 +140,9 @@ void printQuestion(qStruct **questions){
                 }                
             }                       
         }
-        scanf("%s", input);
+        do{
+            scanf("%s", input);
+        }while(!findLetter(cAnswer, input));      
         for(int l =0; l < questions[rndQ][0].qSize; l++){                       
             if(strlen(questions[rndQ][l].question) == 1){                              
                 if(cSolution == 'A'){
