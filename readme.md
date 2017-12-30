@@ -6,8 +6,8 @@ progress:
 
 
 28.12. controller.c:
-+ 30.12. input validation consists of:<br /> 
-    => letter checking: if user enters char(s) that don't consist in the set of solutions e.g. AXCB of ABCD, so X is not in ABCD, repeat user input<br />
++ 30.12. input validation:<br /> 
+    => letter checking: if user enters char(s) that don't consist in a set of solution possibilities e.g. AXCB of ABCD, so X is not in ABCD, repeat user input<br />
     => check Answer: convert to upper case, sort string, remove duplicates, when user enters e.g. ccaabba will be ABC
 
 + 29.12. fixed score bug (char arr termination)

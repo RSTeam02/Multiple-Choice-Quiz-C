@@ -78,8 +78,7 @@ bool findLetter(char toChar, char *input){
     }
     for (int i =0; i<strlen(input); i++){
         input[i] = toupper(input[i]);               
-    }  
-    int i,j=0;
+    }    
     str[aSize] = '\0';
 
     for (int i = 0; i < strlen(input); i++){
