@@ -5,7 +5,12 @@ Similar to the Multiple Choice Quiz in C++, the program is rewritten in C langua
 progress:
 
 
-28.12. controller.c:
+31.12. controller.c:
++ 31.12: additional options<br />
+    => set name by user input<br />
+    => input validation (y/n)
+    => enable,disable shuffling (order of questions, positions of answers)<br />
+    => restart game (y/n)<br />
 + 30.12. input validation:<br /> 
     => letter checking: if user enters char(s) that don't consist in a set of solution possibilities e.g. AXCB of ABCD, so X is not in ABCD, repeat user input<br />
     => check Answer: convert to upper case, sort string, remove duplicates, when user enters e.g. ccaabba will be ABC
@@ -38,92 +43,180 @@ progress:
 ```
 $ gcc main.c filereader.c question.c controller.c shuffle.c -std=c99 -o main
 $ ./main
-Name: Joe, Score: 0.000000
-Q: What is the meaning of "x++"/"x--"?
-A: it is also known as increment/decrement operator
-B: it adds/subtracts x by 2
-C: it adds/subtracts x by 1
-D: it's equal to x=x+1/x=x-1
-E: it's equal to x=x+2/x=x-2
-cad
+Enter your name: Joe
+Shuffle order of questions (y/n): n
+Shuffle order of answer possibilities, each question (y/n): y
+Name: Joe, Score: 0.00
+Q: 99 is equal to:
+A: 11*9
+B: 2*33
+C: 3*30+3²
+ac
 Solution:
 A
 C
-D
-3 answer(s) right, 0 answer(s) wrong
-Joe achieved 0.750000 pts for this question
-Joe's score: 0.750000pts
-
-
-Q: 99 is equal to:
-A: 11*9
-B: 3*30+3²
-C: 2*33
-XABZ       
-X is not in ABC, repeat input
-Z is not in ABC, repeat input
-Ba
-Solution:
-A
-B
 2 answer(s) right, 0 answer(s) wrong
-Joe achieved 0.500000 pts for this question
-Joe's score: 1.250000pts
+Joe achieved 0.50 pts for this question
+Joe's score: 0.50pts
 
 
 Q: Which color component(s) contain(s) the RGB color space?
-A: green
-B: red
-C: rose
-D: grey
+A: red
+B: grey
+C: green
+D: rose
 E: ruby
 F: blue
-gF 
-G is not in ABCDEF, repeat input
-fab
+fac
 Solution:
 A
-B
+C
 F
 3 answer(s) right, 0 answer(s) wrong
-Joe achieved 0.750000 pts for this question
-Joe's score: 2.000000pts
+Joe achieved 0.75 pts for this question
+Joe's score: 1.25pts
+
+
+Q: What is the meaning of "x++"/"x--"?
+A: it's equal to x=x+2/x=x-2
+B: it's equal to x=x+1/x=x-1
+C: it is also known as increment/decrement operator
+D: it adds/subtracts x by 2
+E: it adds/subtracts x by 1
+eaf
+f is not in ABCDE, repeat input
+bce
+Solution:
+B
+C
+E
+3 answer(s) right, 0 answer(s) wrong
+Joe achieved 0.75 pts for this question
+Joe's score: 2.00pts
 
 
 Q: What do you know about the C-Language?
-A: it's a programming language with object orientation
-B: C is nowadays still used for OS-Development
+A: C is nowadays still used for OS-Development
+B: the successor of C is the D language
 C: it was developed by Bjarne Stroustrup
-D: it was developed by Dennis Ritchie
-E: the successor of C is the D language
+D: it's a programming language with object orientation
+E: it's an imperative programming language
 F: the "hello world" program gains popularity within the C-language
-G: it's an imperative programming language
-ghb
-H is not in ABCDEFG, repeat input
-bdcfg
+G: it was developed by Dennis Ritchie
+gfab
+Solution:
+A
+E
+F
+G
+3 answer(s) right, 1 answer(s) wrong
+Joe achieved 0.50 pts for this question
+Joe's score: 2.50pts
+
+
+Q: What does the "%" operator in a programming language?
+A: it is supposed to use for percentage calculation
+B: it is also known as the "modulo" operator
+C: it calculates the remainder of a division
+D: 1%100=1/100
+E: 1%100=100
+dab
 Solution:
 B
+C
+E
+1 answer(s) right, 2 answer(s) wrong
+Joe achieved 0.00 pts for this question
+Joe's score: 2.50pts
+
+
+Restart game? (y/n): y
+Enter your name: Jane
+Shuffle order of questions (y/n): y
+Shuffle order of answer possibilities, each question (y/n): n
+Name: Jane, Score: 0.00
+Q: What is the meaning of "x++"/"x--"?
+A: it is also known as increment/decrement operator
+B: it adds/subtracts x by 2
+C: it's equal to x=x+2/x=x-2
+D: it adds/subtracts x by 1
+E: it's equal to x=x+1/x=x-1
+ace
+Solution:
+A
+D
+E
+2 answer(s) right, 1 answer(s) wrong
+Jane achieved 0.25 pts for this question
+Jane's score: 0.25pts
+
+
+Q: What do you know about the C-Language?
+A: the successor of C is the D language
+B: it's a programming language with object orientation
+C: it's an imperative programming language
+D: it was developed by Dennis Ritchie
+E: it was developed by Bjarne Stroustrup
+F: the "hello world" program gains popularity within the C-language
+G: C is nowadays still used for OS-Development
+acdfg
+Solution:
+C
 D
 F
 G
 4 answer(s) right, 1 answer(s) wrong
-Joe achieved 0.750000 pts for this question
-Joe's score: 2.750000pts
+Jane achieved 0.75 pts for this question
+Jane's score: 1.00pts
 
 
 Q: What does the "%" operator in a programming language?
-A: 1%100=1/100
-B: it is supposed to use for percentage calculation
-C: 1%100=100
-D: it calculates the remainder of a division
-E: it is also known as the "modulo" operator
-cde
+A: it is supposed to use for percentage calculation
+B: it calculates the remainder of a division
+C: it is also known as the "modulo" operator
+D: 1%100=1/100
+E: 1%100=100
+ecv
+v is not in ABCDE, repeat input
+ecb
 Solution:
+B
 C
-D
 E
 3 answer(s) right, 0 answer(s) wrong
-Joe achieved 0.750000 pts for this question
-Joe's score: 3.500000pts
+Jane achieved 0.75 pts for this question
+Jane's score: 1.75pts
 
+
+Q: 99 is equal to:
+A: 3*30+3²
+B: 2*33
+C: 11*9
+ac
+Solution:
+A
+C
+2 answer(s) right, 0 answer(s) wrong
+Jane achieved 0.50 pts for this question
+Jane's score: 2.25pts
+
+
+Q: Which color component(s) contain(s) the RGB color space?
+A: red
+B: rose
+C: ruby
+D: green
+E: grey
+F: blue
+fad
+Solution:
+A
+D
+F
+3 answer(s) right, 0 answer(s) wrong
+Jane achieved 0.75 pts for this question
+Jane's score: 3.00pts
+
+
+Restart game? (y/n): n
 ```

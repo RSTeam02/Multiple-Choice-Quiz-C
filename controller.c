@@ -11,9 +11,16 @@
 player p1;
 
 void start(qStruct **questions){
-    p1.name = "Joe";
-    p1.score = 0;    
-    printQuestion(questions);
+    int yn =0;
+    do{
+        p1.name = malloc(100 * sizeof(char)); 
+        printf("Enter your name: ");
+        scanf("%s", p1.name);   
+        p1.score = 0;    
+        printQuestion(questions);
+        printf("Restart game? (y/n): ");
+        yn = checkYN();
+    }while(yn == 1);
 }
 
 int countAnswer(int qNo, qStruct **questions){
@@ -44,8 +51,8 @@ char *validation(char *input, size_t size){
             }                          
         }
     }
-    input[strlen(input)] = '\0';
-    char *nonDoubles = malloc(size);
+    input[strlen(input) + 1] = '\0';    
+    char *nonDoubles = malloc(size + 1);
     /*
         + remove duplicates e.g. aaabAbCc => ABC       
     */
@@ -56,23 +63,23 @@ char *validation(char *input, size_t size){
             k++;
         }          
     }
-    nonDoubles[k] = '\0';
+    nonDoubles[k + 1] = '\0';    
     return nonDoubles;
 }
 
 
 bool findLetter(size_t aSize, char *input){    
-    char cAnswer = 'A';   
+    char beginChar = 'A';   
     bool found = true;  
-    char *str = malloc(aSize);
+    char *str = malloc(aSize + 1);
     int i = 0;
 
     do{
-        str[i] = cAnswer;         
-        cAnswer++;        
+        str[i] = beginChar;         
+        beginChar++;        
         i++;
     }while(i < aSize); 
-    str[i] = '\0';
+    str[i+1] = '\0';
 
     for (int i = 0; i < strlen(input); i++){
         if(!strchr(str, toupper(input[i]))){
@@ -105,52 +112,66 @@ void checkAnswer(char *input, char *solution){
         result = 0;
     }
     p1.score += result;
-    printf("%s achieved %f pts for this question\n%s's score: %fpts\n\n", p1.name,result, p1.name, p1.score);
+    printf("%s achieved %.2f pts for this question\n%s's score: %.2fpts\n\n", p1.name,result, p1.name, p1.score);
     
+}
+
+int checkYN(){
+    char input;
+    int io =0;
+     do{
+        scanf(" %c", &input);			
+        if (toupper(input) != 'Y' && toupper(input) != 'N'){
+            printf("enter y or n\n");                               
+        }else{
+            io = ('Y' == toupper(input)) ? 1 : 0;
+            break;
+        }
+    }while(1);   	
+    return io;
 }
 
 
 void printQuestion(qStruct **questions){
-    printf("Name: %s, Score: %f\n", p1.name, p1.score);       
-    int *rndQuestion = randomPos(questions[0][0].line, true);
+    char shuffleQ, shuffleA;    
+    printf("Shuffle order of questions (y/n): ");
+    shuffleQ = checkYN();
+    printf("Shuffle order of answer possibilities, each question (y/n): ");
+    shuffleA = checkYN();    
+    printf("Name: %s, Score: %.2f\n", p1.name, p1.score);       
+    int *rndQuestion = randomPos(questions[0][0].line, shuffleQ);
     for(int k =0; k<questions[0][0].line; k++){
         int rndQ = rndQuestion[k];        
-        char cAnswer = 'A';
-        char cSolution = 'A';
+        char beginChar = 'A';        
         int numAnswer = countAnswer(rndQ, questions);       
-        char *solutionStr = (char*)malloc(sizeof(char));
-        char *input = (char*)malloc(sizeof(char));
+        char *input = malloc(100 * sizeof(char));        
         size_t solutionIdx= 0;
         size_t aSize = 0;        
-        int *rndAnswer = randomPos(numAnswer, true); 
-        for(int l =0; l < questions[rndQ][0].qSize; l++){                       
-            if(strlen(questions[rndQ][l].question) != 1){        
-                if(l != 0){
-                    printf("%c: %s\n",cAnswer, questions[rndQ][rndAnswer[l%numAnswer]+1].question);                   
-                    cAnswer++;
-                    aSize++;
-                }else{
-                    printf("Q: %s\n", questions[rndQ][l].question);
-                }                
-            }                       
+        int *rndAnswer = randomPos(numAnswer, shuffleA);
+        printf("Q: %s\n", questions[rndQ][0].question); 
+        for(int l =0; l < numAnswer; l++){                 
+            printf("%c: %s\n",beginChar, questions[rndQ][rndAnswer[l]+1].question);                       
+            beginChar++;
+            aSize++;                     
         }
         do{
             scanf("%s", input);
-        }while(!findLetter(aSize, input));      
-        for(int l =0; l < questions[rndQ][0].qSize; l++){                       
-            if(strlen(questions[rndQ][l].question) == 1){                              
-                if(cSolution == 'A'){
-                    printf("Solution:\n");
-                }             
-                if(strcmp(questions[rndQ][rndAnswer[l%numAnswer]+numAnswer+1].question, "+") == 0){
-                    printf("%c\n",cSolution);
-                    solutionStr[solutionIdx] = cSolution;
-                    solutionIdx++;                   
-                }           
-                cSolution++;                
-            }                        
-        }
-        solutionStr[solutionIdx] = '\0';       
+        }while(!findLetter(aSize, input));
+        
+        char *solutionStr = malloc(aSize + 1);
+        beginChar = 'A';
+        for(int l =0; l < numAnswer; l++){                           
+            if(beginChar == 'A'){
+                printf("Solution:\n");
+            }             
+            if(strcmp(questions[rndQ][rndAnswer[l]+1+numAnswer].question, "+") == 0){
+                printf("%c\n",beginChar);
+                solutionStr[solutionIdx] = beginChar;
+                solutionIdx++;                   
+            }           
+            beginChar++;                     
+        }        
+        solutionStr[solutionIdx + 1] = '\0';              
         checkAnswer(input, solutionStr);
         printf("\n");         
     }
