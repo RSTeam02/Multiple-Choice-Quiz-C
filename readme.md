@@ -8,7 +8,7 @@ progress:
 31.12. controller.c:
 + 31.12: additional options<br />
     => set name by user input<br />
-    => input validation (y/n)
+    => input validation (y/n)<br />
     => enable,disable shuffling (order of questions, positions of answers)<br />
     => restart game (y/n)<br />
 + 30.12. input validation:<br /> 
